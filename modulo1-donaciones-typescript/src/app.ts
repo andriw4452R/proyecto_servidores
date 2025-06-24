@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import donacionRoutes from './routes/donacion.routes';
 import donanteRoutes from './routes/donante.routes';
 import productoRoutes from './routes/producto.routes';
+import tipoProductoRoutes from './routes/tipo_producto.routes';
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/donaciones', donacionRoutes);
 app.use('/api/donantes', donanteRoutes);
 app.use('/api/productos', productoRoutes); 
+app.use('/api/tipos-producto', tipoProductoRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
