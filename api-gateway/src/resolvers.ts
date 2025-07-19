@@ -1,22 +1,6 @@
-import axios from 'axios';
+import { mergeResolvers } from '@graphql-tools/merge';
+import { resolvers as DonanteResolvers } from './modulo1_TS/donante/donante.resolver';
 
-export const resolvers = {
-  Query: {
-    donantes: async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/donante');
-
-        // Mapeamos id_donante a id
-        return response.data.map((donante: any) => ({
-          id: donante.id_donante,
-          nombre: donante.nombre,
-          correo: donante.correo,
-          telefono: donante.telefono,
-        }));
-      } catch (error) {
-        console.error('Error al obtener donantes:', error);
-        return [];
-      }
-    },
-  },
-};
+export const resolvers = mergeResolvers([
+  DonanteResolvers
+]);

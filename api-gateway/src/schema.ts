@@ -1,14 +1,6 @@
-import { gql } from 'apollo-server';
+import { mergeTypeDefs } from '@graphql-tools/merge';
+import { typeDefs as Donante } from './modulo1_TS/donante/donante.schema';
 
-export const typeDefs = gql`
-  type Donante {
-    id: ID!
-    nombre: String!
-    correo: String!
-    telefono: String
-  }
-
-  type Query {
-    donantes: [Donante]
-  }
-`;
+export const typeDefs = mergeTypeDefs([
+  Donante
+]);
