@@ -1,15 +1,30 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
-  type Dummy {
-    id: ID
+  type TipoProducto {
+    id: ID!
+    nombre: String!
+    descripcion: String!
+  }
+
+  input CrearTipoProductoInput {
+    nombre: String!
+    descripcion: String!
+  }
+
+  input UpdateTipoProductoInput {
+    nombre: String
+    descripcion: String
   }
 
   type Query {
-    _empty: String
+    tiposProducto: [TipoProducto]
+    getTipoProducto(id: ID!): TipoProducto
   }
 
   type Mutation {
-    _empty: String
+    crearTipoProducto(input: CrearTipoProductoInput!): TipoProducto
+    updateTipoProducto(id: ID!, input: UpdateTipoProductoInput!): TipoProducto
+    deleteTipoProducto(id: ID!): String
   }
 `;

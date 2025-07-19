@@ -1,15 +1,30 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
-  type Dummy {
-    id: ID
+  type EstadoDonacion {
+    id: ID!
+    nombre: String!
+    descripcion: String!
+  }
+
+  input CrearEstadoDonacionInput {
+    nombre: String!
+    descripcion: String!
+  }
+
+  input UpdateEstadoDonacionInput {
+    nombre: String
+    descripcion: String
   }
 
   type Query {
-    _empty: String
+    estadosDonacion: [EstadoDonacion]
+    getEstadoDonacion(id: ID!): EstadoDonacion
   }
 
   type Mutation {
-    _empty: String
+    crearEstadoDonacion(input: CrearEstadoDonacionInput!): EstadoDonacion
+    updateEstadoDonacion(id: ID!, input: UpdateEstadoDonacionInput!): EstadoDonacion
+    deleteEstadoDonacion(id: ID!): String
   }
 `;
