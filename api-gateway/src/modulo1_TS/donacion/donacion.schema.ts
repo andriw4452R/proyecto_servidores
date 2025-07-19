@@ -35,7 +35,7 @@ export const typeDefs = gql`
     cantidad: Float!
     descripcion: String
     id_donante: Int!
-    id_productos: [Int!]!
+    productos_ids: [Int!]!   # ✅ CAMBIADO AQUÍ
     id_estado: Int!
   }
 
@@ -44,7 +44,7 @@ export const typeDefs = gql`
     cantidad: Float
     descripcion: String
     id_donante: Int
-    id_productos: [Int!]
+    productos_ids: [Int!]   # ✅ CAMBIADO AQUÍ TAMBIÉN
     id_estado: Int
   }
 
