@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Actualizar Información</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .main-container {
+    display: flex;
+    gap: 30px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 95%;
+  }
+
+  .container, .info {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #003c75;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #005395;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #003c75;
+  }
+
+  #mensaje {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .info {
+    background: #f9fafc;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  /* Avatar circular */
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #005395;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 auto 15px auto;
+  }
+
+  .info h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .info p {
+    margin: 8px 0;
+    font-size: 15px;
+  }
+
+  .info span {
+    font-weight: bold;
+    color: #005395;
+  }
+</style>
+</head>
+<body>
+
+<div class="main-container">
+  <!-- Formulario -->
+  <div class="container">
+    <h2>Actualizar Información</h2>
+    <form id="form-usuario">
+      <label for="numero">Número</label>
+      <input type="text" id="numero" placeholder="Ingrese su número" required>
+      <label for="correo">Correo</label>
+      <input type="email" id="correo" placeholder="Ingrese su correo" required>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+      <input type="hidden" id="usuario_id" value="{{ usuario_id }}">
+      <button type="submit">Actualizar</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
+
+  <!-- Panel con avatar y datos -->
+  <div class="info">
+    <div class="avatar" id="avatar">?</div>
+    <h3>Datos actuales</h3>
+    <p>Número: <span id="actual-numero">Cargando...</span></p>
+    <p>Correo: <span id="actual-correo">Cargando...</span></p>
+  </div>
+</div>
+
+<script>
+const usuarioId = document.getElementById('usuario_id').value;
+
+// 🔹 Cargar datos actuales
+fetch(`/usuarios/${usuarioId}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('actual-numero').textContent = data.numero;
+    document.getElementById('actual-correo').textContent = data.correo;
+    document.getElementById('numero').value = data.numero;
+    document.getElementById('correo').value = data.correo;
+
+    // Generar inicial del correo para el avatar
+    if (data.correo && data.correo.length > 0) {
+      const inicial = data.correo.charAt(0).toUpperCase();
+      document.getElementById('avatar').textContent = inicial;
+    }
+  });
+
+// 🔹 Actualizar datos
+document.getElementById('form-usuario').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = {
+    numero: document.getElementById('numero').value.trim(),
+    correo: document.getElementById('correo').value.trim(),
+    password: document.getElementById('password').value.trim()
+  };
+  fetch(`/usuarios/${usuarioId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    const mensaje = document.getElementById('mensaje');
+    if (res.message) {
+      mensaje.textContent = res.message;
+      mensaje.style.color = 'green';
+      document.getElementById('actual-numero').textContent = data.numero;
+      document.getElementById('actual-correo').textContent = data.correo;
+      document.getElementById('avatar').textContent = data.correo.charAt(0).toUpperCase();
+    } else {
+      mensaje.textContent = res.error || 'Error';
+      mensaje.style.color = 'red';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+
+

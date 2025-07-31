@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoDataLibre</title>
+  <link rel="stylesheet" href="../static/styles/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="square"></div>
+      <span class="logo-text">GeoDataLibre</span>
+    </div>
+    <nav class="nav" role="navigation" aria-label="Menú principal">
+      <a id="op1" href="/inicio_Admin">Inicio</a>
+      <a id="op2" href="/buscar">Buscar zona</a>
+      <a  id="op3" class="active" href="#">Visualizar datos</a>
+      <a  id = "op4"href="#">Descargar datos</a>
+      <a id="op5" href="ver_Alertas">Alertas recientes</a>
+      <a id="op6" href="/register">Registrarse</a>
+      <div class="dropdown">
+        <a  href="#" id="idiomaBtn" class="nav-link">Idioma ▾</a>
+        <div class="dropdown-menu" id="idiomaMenu">
+          <a id="op7" href="#">Español</a>
+          <a id="op8" href="#">Inglés</a>
+        </div>  
+      </div>
+    </nav>
+    <div class="search-bar" id="searchBar">
+        <input type="text" placeholder="Escribe una zona..." />
+        <button id="op">Buscar</button>
+    </div>
+
+  </header>
+
+  <section class="hero">
+    <h1 id="titulo">Portal abierto con datos geológicos y riesgos naturales</h1>
+    <p id="descripcion">Consulta información precisa y actualizada sobre zonas de riesgo en el país.</p>
+  </section>
+
+  <main class="zones">
+    <div class="zone-card">
+      <h2 id="zona1">Zona 1: Región Andina</h2>
+      <p id="detalle1">Datos geológicos y alertas disponibles.</p>
+      <button id="btn1">Ver detalles</button>
+    </div>
+    <div class="zone-card">
+      <h2 id="zona2">Zona 2: Región Andina</h2>
+      <p id="detalle2">Datos geológicos y alertas disponibles.</p>
+      <button id="btn2">Ver detalles</button>
+    </div>
+    <div class="zone-card">
+      <h2 id="zona3">Zona 3: Región Andina</h2>
+      <p id="detalle3">Datos geológicos y alertas disponibles.</p>
+      <button id="btn3">Ver detalles</button>
+    </div>
+  </main>
+  <script>
+    const toggleBtn = document.getElementById('toggleSearch');
+    const searchBar = document.getElementById('searchBar');
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (searchBar.style.display === 'block') {
+        searchBar.style.display = 'none';
+        } else {
+        searchBar.style.display = 'block';
+        }
+    });
+    </script>
+
+    <script>
+    document.getElementById('idiomaBtn').addEventListener('click', function() {
+        document.getElementById('idiomaMenu').classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(e) {
+        if (!e.target.matches('#idiomaBtn')) {
+            document.getElementById('idiomaMenu').classList.remove('show');
+        }
+    });
+  </script>
+
+  <script src="{{ url_for('static', filename='js/idioma.js') }}"></script>
+
+
+
+</body>
+</html>

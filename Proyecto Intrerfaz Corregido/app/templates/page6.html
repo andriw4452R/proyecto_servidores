@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoDataLibre - Users</title>
+  <link rel="stylesheet" href="../static/styles/style4.css" />
+  <style>
+    /* Menús desplegables */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0; /* Evita que sobresalga */
+      top: 100%;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      margin-top: 5px;
+      z-index: 10;
+      min-width: 160px;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
+      color: #003c75;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav .nav-link {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="square"></div>
+      <span class="logo-text">GeoDataLibre</span>
+    </div>
+    <nav class="nav" role="navigation" aria-label="Menú principal">
+      <a id="op10" href="#">Revisión de Datos</a>
+      <a id="op11" href="#">Ver Reportes</a>
+      <a id="op12" href="/ver_Alertas">Alertas recientes</a>
+      
+      <!-- Menú Idioma -->
+      <div class="dropdown">
+        <a id="idiomaBtn" class="nav-link">Idioma ▾</a>
+        <div class="dropdown-menu" id="idiomaMenu">
+          <a href="#">Español</a>
+          <a href="#">Inglés</a>
+        </div>
+      </div>
+
+      <!-- Menú Perfil -->
+      <div class="dropdown">
+        <a  id="perfilBtn" class="nav-link">Perfil ▾</a>
+        <div class="dropdown-menu" id="perfilMenu">
+          <a id="op14" href="/actualizar">Modificar datos</a>
+          <a id="op15" href="/">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 id="titulo" >Portal abierto con datos geológicos y riesgos naturales</h1>
+    <p id="descripcion" >Consulta información precisa y actualizada sobre zonas de riesgo en el país.</p>
+  </section>
+
+  <main class="zones">
+    <div class="zone-card">
+      <h2>Zona 1: Región Andina</h2>
+      <p>Datos geológicos y alertas disponibles.</p>
+      <button>Ver detalles</button>
+    </div>
+  </main>
+
+  <!-- JS -->
+  <script>
+    // Menú Idioma
+    document.getElementById('idiomaBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('idiomaMenu').classList.toggle('show');
+      document.getElementById('perfilMenu').classList.remove('show');
+    });
+
+    // Menú Perfil
+    document.getElementById('perfilBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('perfilMenu').classList.toggle('show');
+      document.getElementById('idiomaMenu').classList.remove('show');
+    });
+
+    // Cerrar al hacer clic fuera
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('#idiomaBtn') && !e.target.matches('#perfilBtn')) {
+        document.getElementById('idiomaMenu').classList.remove('show');
+        document.getElementById('perfilMenu').classList.remove('show');
+      }
+    });
+  </script>
+
+  <script src="{{ url_for('static', filename='js/idioma.js') }}"></script>
+</body>
+</html>
+

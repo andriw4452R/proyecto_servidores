@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoDataLibre</title>
+  <link rel="stylesheet" href="../static/styles/style3.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="square"></div>
+      <span class="logo-text">GeoDataLibre</span>
+    </div>
+    <nav class="nav" role="navigation" aria-label="Menú principal">
+      <a id="op1" href="/"></a>
+      <a id="op3" class="active" href="/buscar">Visualizar datos</a>
+      <a id = "op4" href="#">Descargar datos</a>
+      <a id="op5" href="/ver_Alertas">Alertas recientes</a>
+      <a id="op6" href="/register">Registrarse</a>
+      <div class="dropdown">
+        <a href="#" id="idiomaBtn" class="nav-link">Idioma ▾</a>
+        <div class="dropdown-menu" id="idiomaMenu">
+          <a id="op7" href="#">Español</a>
+          <a id="op8" href="#">Inglés</a>
+        </div>  
+      </div>
+    </nav>
+    <div class="search-bar" id="searchBar">
+        <input type="text" placeholder="Escribe una zona..." />
+        <button id="op9">Buscar</button>
+    </div>
+
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 id="titulo">Portal abierto con datos geológicos y riesgos naturales</h1>
+            <p id="descripcionRegistro">
+            GeoDataLibre es una plataforma interactiva que te permite acceder a información detallada y actualizada sobre zonas con riesgos naturales en todo el país.Recibe alertas tempranas, consulta sobre datos geológicos y contribuye a la seguridad de tu comunidad.  
+            <br><br>
+            Para acceder a funcionalidades personalizadas y guardar tus consultas, te invitamos a registrarte o iniciar sesión en el sistema.
+            </p>
+            </div>
+
+            <div class="registro-container">
+            <h2 id="formTitulo">Iniciar Sesion</h2>
+                <form id="form-login">
+
+                    <label id="labelCorreo"  for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com">
+
+                    <label id="labelPassword" for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="********">
+
+                    <button id="btnLogin" type="submit">iniciar</button>
+                    <p id="mensaje"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+  </main>
+  <script>
+    const toggleBtn = document.getElementById('toggleSearch');
+    const searchBar = document.getElementById('searchBar');
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (searchBar.style.display === 'block') {
+        searchBar.style.display = 'none';
+        } else {
+        searchBar.style.display = 'block';
+        }
+    });
+    </script>
+    <script src="{{ url_for('static', filename='js/registro.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+   
+
+    <script>
+      document.getElementById('idiomaBtn').addEventListener('click', function() {
+          document.getElementById('idiomaMenu').classList.toggle('show');
+      });
+
+      window.addEventListener('click', function(e) {
+          if (!e.target.matches('#idiomaBtn')) {
+              document.getElementById('idiomaMenu').classList.remove('show');
+          }
+      });
+    </script>
+     <script src="{{ url_for('static', filename='js/idioma.js') }}"></script>
+
+</body>
+</html>

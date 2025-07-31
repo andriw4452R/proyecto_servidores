@@ -1,0 +1,444 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f5f7;
+  color: #000;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.square {
+  width: 30px;
+  height: 30px;
+  background-color: #005395;
+  border-radius: 5px;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Navegación */
+.nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+
+
+/* Hero section */
+.hero {
+  background-color: #d9ecff;
+  padding: 160px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #003c75;
+}
+
+.hero p {
+  font-size: 1rem;
+}
+
+/* Zonas */
+.zones {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 100px 2rem 80px;
+  flex-wrap: wrap;
+  background-color: #f8f9fb;
+}
+
+.zone-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 2rem;
+  width: 380px;
+  min-height: 240px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.zone-card:hover {
+  transform: translateY(-20px);
+}
+
+.zone-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  font-weight: bold;
+}
+
+.zone-card p {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.zone-card button {
+  background-color: #005395;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.zone-card button:hover {
+  background-color: #003c75;
+}
+
+.nav a:hover {
+  color: #b31328;              /* Cambia solo el color del texto */
+  text-decoration: underline;
+}
+/* Barra de búsqueda oculta por defecto */
+.search-bar {
+  display: none;
+  background-color: #e9f3ff;
+  padding: 10px 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  width: 60%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  margin-left: 10px;
+  background-color: #005395;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #003c75;
+}
+
+
+/* ============================ */
+/* Responsive NAV + layout */
+/* ============================ */
+
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 0;
+    font-size: 0.95rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .zone-card {
+    width: 90%;
+    min-height: auto;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .zone-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .zone-card p {
+    font-size: 0.95rem;
+  }
+
+  .zone-card button {
+    font-size: 0.85rem;
+  }
+
+  .search-bar input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+.nav a:focus {
+  outline: 2px solid #005395;
+  outline-offset: 2px;
+  background-color: #e1efff;
+  border-radius: 4px;
+}
+
+/* Contenedor horizontal dentro del hero */
+
+
+/* Texto */
+
+
+/* Formulario */
+
+
+
+.registro-container label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.registro-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.registro-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #005395;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registro-container button:hover {
+  background-color: #003c75;
+}
+
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .registro-container,
+  .hero-text {
+    width: 100%;
+  }
+
+  .registro-container h2 {
+    text-align: center;
+  }
+}
+/* === Estilo coherente con la interfaz principal GeoDataLibre === */
+
+.registro-container {
+  background-color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  margin-top: -20px; /* ✅ mueve el formulario hacia arriba */
+}
+
+.registro-container h2 {
+  text-align: center;
+  color: #003c75;
+  font-size: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #005395;
+  outline: none;
+}
+
+form button {
+  width: 100%;
+  background-color: #005395;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #003c75;
+}
+
+#mensaje {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #b31328;
+}
+
+/* Contenedor del hero con texto + formulario */
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .registro-container {
+    max-width: 90%;
+  }
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 130px;
+  margin-top: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown-menu a:hover {
+  background-color: #e9f3ff;
+}
+
+/* Mostrar menú */
+.show {
+  display: block;
+}
+
+/* Para que el dropdown esté alineado con los enlaces */
+.nav .dropdown {
+  display: inline-block;  /* Igual que los enlaces */
+  margin-left: 1.5rem;   /* Igual al resto */
+  position: relative;    /* Necesario para el menú */
+}
+
+.nav .dropdown a.nav-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav .dropdown a.nav-link:hover {
+  color: #b31328;
+  text-decoration: underline;
+}
+
+

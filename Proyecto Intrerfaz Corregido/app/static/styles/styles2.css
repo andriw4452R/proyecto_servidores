@@ -1,0 +1,80 @@
+/* === Estilo coherente con la interfaz principal GeoDataLibre === */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f5f7;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.registro-container {
+  background-color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 90%;
+}
+
+.registro-container h1 {
+  text-align: center;
+  color: #003c75;
+  font-size: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #005395;
+  outline: none;
+}
+
+form button {
+  width: 100%;
+  background-color: #005395;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #003c75;
+}
+
+#mensaje {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #b31328;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .registro-container {
+    padding: 1.5rem 1rem;
+  }
+}

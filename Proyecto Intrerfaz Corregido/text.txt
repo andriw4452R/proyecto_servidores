@@ -1,0 +1,29 @@
+PARA  EJECUTAR EL PROYECTO INSTALAR DEPENDENCIA
+
+Dentro de la carpeta del proyecto ejecuta :
+
+crea un entorno virtual python
+
+pip install -r requirements.txt
+
+para generarlo (si no existe el archivo requirements.txt ) :
+pip freeze > requirements.txt
+
+
+ejecutar el proyecto dentro de la carpeta del proyecto:
+ Activar entorno virtual:
+ venv\Scripts\activate 
+
+ Desactivar entorno virtual:
+ deactivate
+
+ luego ejecutar:
+
+ python main.py
+
+
+ ingresar a la url :
+ http://127.0.0.1:5000
+
+
+

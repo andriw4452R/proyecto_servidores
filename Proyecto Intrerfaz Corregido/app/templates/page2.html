@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoDataLibre- Admin</title>
+  <link rel="stylesheet" href="../static/styles/style4.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="square"></div>
+      <span class="logo-text">GeoDataLibre</span>
+    </div>
+    <nav class="nav" role="navigation" aria-label="Menú principal">
+      <a id="op16"  data-tooltip="Gestiona Usuarios" href="#">Gestion de Usuarios</a>
+      <a id="op17" data-tooltip="Revisar Datos Disponibes" href="/registrarDatosG">Revision de Datos</a>
+      <a id="op18"  data-tooltip="ver y generar reportes" href="#">Ver Reportes</a>
+      <a data-tooltip="Publicar o ver alertas" id="op5" href="/postAlerta">Alertas recientes</a>
+      
+      <div class="dropdown">
+        <a data-tooltip="Cambiar Idioma" href="#" id="idiomaBtn" class="nav-link">Idioma ▾</a>
+        <div class="dropdown-menu" id="idiomaMenu">
+          <a id="op7" href="#">Español</a>
+          <a id="op8" href="#">Inglés</a>
+        </div>
+        <div class="dropdown">
+          <a  id="perfilBtn" class="nav-link">Perfil ▾</a>
+          <div class="dropdown-menu" id="perfilMenu">
+            <a id="op14" href="/actualizar">Modificar datos</a>
+            <a id="op15" href="/">Cerrar sesión</a>
+          </div>
+      </div>
+
+        
+          
+      </div>
+    </nav>
+    <div class="search-bar" id="searchBar">
+        <input type="text" placeholder="Escribe una zona..." />
+        <button id="op">Buscar</button>
+    </div>
+
+  </header>
+
+  <section class="hero">
+    
+    <h1 id="titulo">Portal abierto con datos geológicos y riesgos naturales</h1>
+    <p id="descripcion">Consulta información precisa y actualizada sobre zonas de riesgo en el país.</p>
+  </section>
+
+  <main class="zones">
+    <div class="zone-card">
+      <h2 id="zona1">Zona 1: Región Andina</h2>
+      <p id="detalle1">Datos geológicos y alertas disponibles.</p>
+      <button id="btn1">Ver detalles</button>
+    </div>
+    <div class="zone-card">
+      <h2 id="zona2">Zona 2: Región Andina</h2>
+      <p id="detalle2">Datos geológicos y alertas disponibles.</p>
+      <button id="btn2">Ver detalles</button>
+    </div>
+    <div class="zone-card">
+      <h2 id="zona3">Zona 3: Región Andina</h2>
+      <p id="detalle3">Datos geológicos y alertas disponibles.</p>
+      <button id="btn3">Ver detalles</button>
+    </div>
+  </main>
+  <script>
+    const toggleBtn = document.getElementById('toggleSearch');
+    const searchBar = document.getElementById('searchBar');
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (searchBar.style.display === 'block') {
+        searchBar.style.display = 'none';
+        } else {
+        searchBar.style.display = 'block';
+        }
+    });
+    </script>
+
+    <script>
+    document.getElementById('idiomaBtn').addEventListener('click', function() {
+        document.getElementById('idiomaMenu').classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(e) {
+        if (!e.target.matches('#idiomaBtn')) {
+            document.getElementById('idiomaMenu').classList.remove('show');
+        }
+    });
+
+     // Menú Perfil
+    document.getElementById('perfilBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('perfilMenu').classList.toggle('show');
+      document.getElementById('idiomaMenu').classList.remove('show');
+    });
+
+
+    // Cerrar al hacer clic fuera
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('#idiomaBtn') && !e.target.matches('#perfilBtn')) {
+        document.getElementById('idiomaMenu').classList.remove('show');
+        document.getElementById('perfilMenu').classList.remove('show');
+      }
+    });
+  </script>
+
+  <script src="{{ url_for('static', filename='js/idioma.js') }}"></script>
+
+
+
+</body>
+</html>
